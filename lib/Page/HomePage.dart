@@ -10,13 +10,41 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  //Controller
   final myHoraireBrutController = TextEditingController();
+  final myHoraireNetController = TextEditingController();
+  final myMensuelBrutController = TextEditingController();
+  final myMensuelNetController = TextEditingController();
+  final myAnnuelBrutController = TextEditingController();
+  final myAnnuelNetController = TextEditingController();
+
+  final myMensuelNetApresImpotController = TextEditingController();
+  final myAnnuelNetApresImpotController = TextEditingController();
 
   //Le statut de base est non cadre
   String statut = "Non-cadre-22%";
   //La valeur est 1 car le statut est cadre de base
-  int val = 1;
-  double currentSliderValue = 100;
+  int _statutVal = 1;
+  int _moisPrimeVal = 1;
+  //Slider
+  double _tempsSliderValue = 100;
+  double _prelevementSliderValue = 0;
+
+  //function
+
+  void clearAllField()
+  {
+    myHoraireBrutController.text = "";
+    myHoraireNetController.text = "";
+    myMensuelBrutController.text = "";
+    myMensuelNetController.text = "";
+    myAnnuelBrutController.text = "";
+    myAnnuelNetController.text = "";
+
+    myMensuelNetApresImpotController.text = "";
+    myAnnuelNetApresImpotController.text = "";
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -204,10 +232,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                     title: const Text('Salarié non cadre'),
                                     leading: Radio(
                                       value: 1,
-                                      groupValue: val,
+                                      groupValue: _statutVal,
                                       onChanged: (value) {
                                         setState(() {
-                                          val = int.parse(value.toString());
+                                          _statutVal = int.parse(value.toString());
                                         });
                                       },
                                     ),
@@ -222,10 +250,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                     title: const Text('Salarié non cadre'),
                                     leading: Radio(
                                       value: 2,
-                                      groupValue: val,
+                                      groupValue: _statutVal,
                                       onChanged: (value) {
                                         setState(() {
-                                          val = int.parse(value.toString());
+                                          _statutVal = int.parse(value.toString());
                                         });
                                       },
                                     ),
@@ -240,10 +268,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                     title: const Text('Salarié non cadre'),
                                     leading: Radio(
                                       value: 3,
-                                      groupValue: val,
+                                      groupValue: _statutVal,
                                       onChanged: (value) {
                                         setState(() {
-                                          val = int.parse(value.toString());
+                                          _statutVal = int.parse(value.toString());
                                         });
                                       },
                                     ),
@@ -258,10 +286,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                     title: const Text('Salarié non cadre'),
                                     leading: Radio(
                                       value: 4,
-                                      groupValue: val,
+                                      groupValue: _statutVal,
                                       onChanged: (value) {
                                         setState(() {
-                                          val = int.parse(value.toString());
+                                          _statutVal = int.parse(value.toString());
                                         });
                                       },
                                     ),
@@ -276,10 +304,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                     title: const Text('Salarié non cadre'),
                                     leading: Radio(
                                       value: 5,
-                                      groupValue: val,
+                                      groupValue: _statutVal,
                                       onChanged: (value) {
                                         setState(() {
-                                          val = int.parse(value.toString());
+                                          _statutVal = int.parse(value.toString());
                                         });
                                       },
                                     ),
@@ -313,7 +341,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text("SELECTIONNEZ VOTRE TEMPS DE TRAVAIL : " + currentSliderValue.toString()+"%",
+                      Text("SELECTIONNEZ VOTRE TEMPS DE TRAVAIL : " + _tempsSliderValue.toString()+"%",
                           style: TextStyle(color: Colors.white))
                     ],
                   ),
@@ -327,10 +355,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         inactiveColor: Colors.white,
                         divisions: 10,
                         activeColor: Colors.white,
-                        value: currentSliderValue,
+                        value: _tempsSliderValue,
                         onChanged: (double value) {
                           setState(() {
-                            currentSliderValue = value;
+                            _tempsSliderValue = value;
                           });
                         },
                       )
@@ -365,10 +393,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                     title: const Text('12 mois'),
                                     leading: Radio(
                                       value: 1,
-                                      groupValue: val,
+                                      groupValue: _moisPrimeVal,
                                       onChanged: (value) {
                                         setState(() {
-                                          val = int.parse(value.toString());
+                                          _moisPrimeVal = int.parse(value.toString());
                                         });
                                       },
                                     ),
@@ -383,10 +411,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                     title: const Text('13 mois'),
                                     leading: Radio(
                                       value: 2,
-                                      groupValue: val,
+                                      groupValue: _moisPrimeVal,
                                       onChanged: (value) {
                                         setState(() {
-                                          val = int.parse(value.toString());
+                                          _moisPrimeVal = int.parse(value.toString());
                                         });
                                       },
                                     ),
@@ -401,10 +429,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                     title: const Text('14 mois'),
                                     leading: Radio(
                                       value: 3,
-                                      groupValue: val,
+                                      groupValue: _moisPrimeVal,
                                       onChanged: (value) {
                                         setState(() {
-                                          val = int.parse(value.toString());
+                                          _moisPrimeVal = int.parse(value.toString());
                                         });
                                       },
                                     ),
@@ -419,10 +447,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                     title: const Text('15 mois'),
                                     leading: Radio(
                                       value: 4,
-                                      groupValue: val,
+                                      groupValue: _moisPrimeVal,
                                       onChanged: (value) {
                                         setState(() {
-                                          val = int.parse(value.toString());
+                                          _moisPrimeVal = int.parse(value.toString());
                                         });
                                       },
                                     ),
@@ -437,10 +465,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                     title: const Text('16 mois'),
                                     leading: Radio(
                                       value: 5,
-                                      groupValue: val,
+                                      groupValue: _moisPrimeVal,
                                       onChanged: (value) {
                                         setState(() {
-                                          val = int.parse(value.toString());
+                                          _moisPrimeVal = int.parse(value.toString());
                                         });
                                       },
                                     ),
@@ -470,10 +498,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         inactiveColor: Colors.white,
                         divisions: 10,
                         activeColor: Colors.white,
-                        value: currentSliderValue,
+                        value: _prelevementSliderValue,
                         onChanged: (double value) {
                           setState(() {
-                            currentSliderValue = value;
+                            _prelevementSliderValue = value;
                           });
                         },
                       )
