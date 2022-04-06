@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Palette.kToDark,
       ),
-      home: const MyHomePage(title: 'Convertir Brut en Net (?autodeploy)'),
+      home: const MyHomePage(title: 'Convertir Brut en Net fix'),
     );
   }
 }
