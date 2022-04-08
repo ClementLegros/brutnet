@@ -1,0 +1,15 @@
+Champs éditable :
+
+-Horaire net/brut
+-Mensuel brut/net
+-Annuel brut/net
+
+C'est champs ont un impact sur "eux même", le mensuel et annuel net après prévelement à la source et le slider du taux de prélèvement
+
+"4" champs on une influence direct sur nos calcul
+
+
+ALGO :
+
+Peut importe la valeur on va repartir de l'horaire brut et modifier en échelle tout les calculs
+

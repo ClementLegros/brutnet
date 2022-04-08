@@ -1,27 +1,22 @@
+
 class BrutNet {
-  double _horaireBrut,
-      _horaireNet,
-      _MensuelBrut,
-      _MensuelNet,
-      _AnnuelBrut,
-      _AnnuelNet;
+  String typeValue;
+  double baseValue;
 
-  BrutNet(this._horaireBrut, this._horaireNet, this._MensuelBrut,
-      this._MensuelNet, this._AnnuelBrut, this._AnnuelNet);
+  BrutNet(this.baseValue, this.typeValue);
 
-  //SETTER AND GETTER
-  set horaireBrut(value){
 
-  }
-
-  //FUNCTION
 
   //Peut importe la valeur de base, pour simplifier tout les calculs on partira tout le temps de l'horaire brut
-  void calculateHoraireBrut(double value, String base)
+  void calculateAll()
   {
-    switch(base)
+    List<double> listOfValue = [];
+
+    switch(typeValue)
     {
       case "hBrut":
+        listOfValue.add(baseValue);
+        calculateHoraireNet(listOfValue, baseValue);
         break;
       case "hNet":
         break;
@@ -38,7 +33,7 @@ class BrutNet {
     }
   }
 
-  void calculateHoraireNet(double value)
+  void calculateHoraireNet(List<double> listOfValue, lastValue)
   {
 
   }
