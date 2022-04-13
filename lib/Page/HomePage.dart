@@ -1,4 +1,8 @@
+import 'package:brutnet/Page/HomePageMobile.dart';
+import 'package:brutnet/Page/HomePageTablet.dart';
+import 'package:brutnet/Page/HomePageWeb.dart';
 import 'package:brutnet/Util/BrutNetUtil.dart';
+import 'package:brutnet/responsive.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -35,6 +39,19 @@ class _MyHomePageState extends State<MyHomePage> {
 
   //function
 
+  void updateStatutVal(value)
+  {
+    setState(() {
+      _statutVal = value;
+    });
+    //On regarde si l'une des zones de texte est vide, et si elle ne l'ait pas alors on va venir mettre
+    //a jour tout les champs de l'application en appelant la fonction calculDuSalaire
+    if(myMensuelBrutController.text != null)
+      {
+        calculDuSalaire(myMensuelBrutController.text ,"brut","m");
+      }
+  }
+
   void clearAllField() {
     myHoraireBrutController.text = "";
     myHoraireNetController.text = "";
@@ -48,11 +65,30 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   //brut net définis si la valeur est du brut ou du net et jma si c'est journalier, mensuel ou annuel
-  void calculDuSalaire(input, brutnet, hma, statut) {
+  void calculDuSalaire(input, brutnet, hma) {
     var value = double.tryParse(input);
     if (value == null) {
       clearAllField();
       return;
+    }
+    int statut = 0;
+    switch(_statutVal)
+    {
+      case 1:
+        statut = 22;
+        break;
+      case 2:
+        statut = 25;
+        break;
+      case 3:
+        statut = 15;
+        break;
+      case 4:
+        statut = 45;
+        break;
+      case 5:
+        statut = 51;
+        break;
     }
 
     //Initialisation des variables
@@ -193,7 +229,29 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Size _size = MediaQuery.of(context).size;
     return Scaffold(
+        body: Responsive(
+      mobile: MyHomePageMobile(),
+      tablet: MyHomePageTablet(),
+      desktop: MyHomePageWeb(
+        calculSalaire: calculDuSalaire,
+        myHoraireBrutController: myHoraireBrutController,
+        myMensuelBrutController: myMensuelBrutController,
+        myAnnuelBrutController: myAnnuelBrutController,
+        myHoraireNetController: myHoraireNetController,
+        myMensuelNetController: myMensuelNetController,
+        myAnnuelNetController: myAnnuelNetController,
+        updateStatutVal: updateStatutVal,
+        statutVal: _statutVal,
+      ),
+    ));
+  }
+}
+
+/*
+
+return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
@@ -793,5 +851,5 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
-  }
-}
+
+ */
