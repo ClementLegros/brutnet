@@ -3,6 +3,8 @@ import 'package:brutnet/Widget/SelectionStatut.dart';
 import 'package:brutnet/Widget/salaireNetColumn.dart';
 import 'package:flutter/material.dart';
 
+import '../Widget/RightPart.dart';
+
 class MyHomePageWeb extends StatefulWidget {
   //Variable
   final calculSalaire;
@@ -133,7 +135,9 @@ class _MyHomePageWebState extends State<MyHomePageWeb> {
                         ])),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [],
+                  children: [
+                    RightPart()
+                  ],
                 ),
               ),
             ],

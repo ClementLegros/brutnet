@@ -63,3 +63,8 @@ int checkStatut(input)
   }
   return statut;
 }
+
+double detectChar(value)
+{
+  return value.replaceAll(RegExp('[^\\d.]'), "");
+}

@@ -1,12 +1,12 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 class Responsive extends StatelessWidget{
+  /* -- variable -- */
   final Widget mobile;
   final Widget tablet;
   final Widget desktop;
 
+  /* -- constructeur -- */
   const Responsive({
     Key? key,
     required this.mobile,
@@ -14,6 +14,7 @@ class Responsive extends StatelessWidget{
     required this.desktop,
 }) : super(key: key);
 
+  /*
   static bool isMobile(BuildContext context) =>
       MediaQuery.of(context).size.width < 650;
 
@@ -23,10 +24,10 @@ class Responsive extends StatelessWidget{
 
   static bool isDesktop(BuildContext context) =>
       MediaQuery.of(context).size.width >= 1100;
+   */
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth >= 1100) {
